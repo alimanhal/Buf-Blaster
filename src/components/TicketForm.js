@@ -41,10 +41,12 @@ export default function TicketForm() {
                  value={title} 
                  className="form-input" 
                  onChange={e => setDescription(e.target.validationMessage)}>
-                    
                  </textarea>
             </div>
             
+            <fieldset className="priority-fieldset">
+                <legend>Priority</legend>
+            </fieldset>
         </form>
     );
 }
