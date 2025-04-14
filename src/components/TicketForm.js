@@ -1,7 +1,8 @@
  
+import { type } from "@testing-library/user-event/dist/type";
 import React ,{useState} from "react";
 
-export default function TicketForm() {
+export default function TicketForm({dispatch}) {
     const [title , setTitle] = useState('');
     const [description , setDescription] = useState('');
     const [priority , setPriority] = useState('');
@@ -21,6 +22,17 @@ export default function TicketForm() {
         e.preventDefault();
         clearForm();
     }
+    const ticketData = {
+        id : new Date().toISOString(),
+        title,
+        description,
+        priority,
+    }
+    
+    dispatch ({
+        type: 'ADD_TICKET',
+        payload: ticketData,
+    })
 
     return(
         <form onSubmit={handleSubmit}  className="ticket-form">
