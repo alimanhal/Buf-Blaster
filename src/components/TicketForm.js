@@ -1,11 +1,21 @@
  
 import { type } from "@testing-library/user-event/dist/type";
-import React ,{useState} from "react";
+import React ,{useEffect, useState} from "react";
 
-export default function TicketForm({dispatch}) {
+export default function TicketForm({dispatch, editingTicket}) {
     const [title , setTitle] = useState('');
     const [description , setDescription] = useState('');
     const [priority , setPriority] = useState('');
+    useEffect(() => {
+
+        if(editingTicket) {
+            setTitle(editingTicket.title);
+            setDescription(editingTicket.description);
+            setPriority(editingTicket.priority);
+        } else {
+            clearForm();
+        }
+    },[editingTicket])
 
     const priorityLabels = {
         1: 'Low',
@@ -21,7 +31,7 @@ export default function TicketForm({dispatch}) {
     const handleSubmit = (e) =>{
         e.preventDefault();
         const ticketData = {
-            id: new Date().toISOString(),
+            id: editingTicket? editingTicket.id : new Date().toISOString(),
             title,
             description,
             priority
@@ -29,7 +39,7 @@ export default function TicketForm({dispatch}) {
 
 
         dispatch({
-            type: 'ADD_TICKET',
+            type: editingTicket? "UPDATE_TICKET" : "ADD_TICKET",
             payload: ticketData
         });
         clearForm();
@@ -37,7 +47,7 @@ export default function TicketForm({dispatch}) {
     } 
     
  
- 
+    
 
     return(
         <form onSubmit={handleSubmit}  className="ticket-form">
