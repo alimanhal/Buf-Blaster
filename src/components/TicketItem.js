@@ -4,14 +4,14 @@ export default  function TicketItem({ticket, dispatch}) {
 
     const {id, title, description, priority} = ticket;
     const priorityLClass = {
-        1: 'low-priority',
-        2: 'medium-priority',
-        3: 'high-priority'
+        1: 'priority-low',
+        2: 'priority-medium',
+        3: 'priority-high'
     }
 
 
     return (
-        <div className="ticket">
+        <div className="ticket-item">
            <div className={`priority-dot ${priorityLClass[ticket.priority]}`}></div>
 
            <h3>{title}</h3>

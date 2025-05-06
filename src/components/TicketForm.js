@@ -34,23 +34,10 @@ export default function TicketForm({dispatch}) {
         });
         clearForm();
         console.log(ticketData);    
-    }
-<<<<<<< HEAD
-     
+    } 
     
-=======
-    const ticketData = {
-        id : new Date().toISOString(),
-        title,
-        description,
-        priority,
-    }
-    
-    dispatch ({
-        type: 'ADD_TICKET',
-        payload: ticketData,
-    })
->>>>>>> f23cc7b2c3d3caeb7990c2c2e26d0b7c0a8d81ac
+ 
+ 
 
     return(
         <form onSubmit={handleSubmit}  className="ticket-form">
@@ -75,24 +62,8 @@ export default function TicketForm({dispatch}) {
             </div>
             
             <fieldset className="priority-fieldset">
-<<<<<<< HEAD
-                <legend>Priority</legend>
-                {Object.entries(priorityLabels).map(([value, label]) => (
-                    <label key={value} className="priority-label">
-                        <input
-                            type="radio"
-                            value={value}
-                            checked={priority === value}
-                            className="priority-input"
-                            onChange={(e) => setPriority(e.target.value)}
-                        ></input>
-                        {label}
-                    </label>
-                )
-            )}
-            </fieldset>
-            <button type="submit" className=" button">submit</button>
-=======
+ 
+     
                 <legend>Priority</legend> 
                 {
                     Object.entries(priorityLabels).map(([value, label]) => (
@@ -110,7 +81,7 @@ export default function TicketForm({dispatch}) {
                 }
             </fieldset>
             <button type="submit" className="button">Submit</button>
->>>>>>> f23cc7b2c3d3caeb7990c2c2e26d0b7c0a8d81ac
+ 
         </form>
     );
 }
